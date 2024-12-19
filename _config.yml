@@ -89,3 +89,7 @@ service-worker: true
 page-mathjax: false
 plugins:
   - jekyll-sitemap
+plugins:
+  - jekyll-minifier
+plugins:
+  - jekyll-compress-html
