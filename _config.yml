@@ -87,3 +87,5 @@ service-worker: true
 
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
+gems:
+  - jekyll-sitemap
