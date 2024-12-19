@@ -91,5 +91,3 @@ plugins:
   - jekyll-sitemap
 plugins:
   - jekyll-minifier
-plugins:
-  - jekyll-compress-html
