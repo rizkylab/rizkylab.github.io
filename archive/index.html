@@ -11,17 +11,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title"
-        content="404 - ">
+        content="Archive - ">
     
     <meta property="og:type" content="website">
     <meta property="og:description"
-        content="The requested page could not be found.:(">
+        content="Archive">
     
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/1557686">
-    <meta property="og:url" content="/404.html">
+    <meta property="og:url" content="/archive/">
     <meta property="og:site_name" content="">
 
-    <title>404 - </title>
+    <title>Archive - </title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -30,7 +30,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="/404.html">
+    <link rel="canonical" href="/archive/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href=" /css/bootstrap.min.css">
@@ -188,14 +188,18 @@
   </div>
 </div>
 
-    <!-- Page Header -->
+    <!--
+Credits: this page shamelessly borrowed a lot from:
+https://github.com/kitian616/jekyll-TeXt-theme
+-->
+<!-- Page Header -->
 
 
 
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/404-bg.jpg');
+        background-image: url('/img/archive.jpg');
         background: ;
     }
 
@@ -208,7 +212,7 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/404-bg.jpg')">
+<header class="intro-header" style="background-image: url('/img/archive.jpg')">
   <div class="header-mask"></div>
   <div class="container">
     <div class="row">
@@ -216,8 +220,8 @@
         
         <div class="site-heading" id="tag-heading">
         
-          <h1>404</h1>
-          <span class="subheading">The requested page could not be found.:(</span>
+          <h1>Archive</h1>
+          <span class="subheading">Archive</span>
         </div>
       </div>
     </div>
@@ -226,9 +230,40 @@
 
 
 
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<!-- Tags (as filter) -->
+			<div id='tag_cloud' class="tags tags-sup js-tags">
+				<a class="tag-button--all" data-encode="">
+					Show All
+					<sup>1</sup>
+				</a>
+
+				
+				
+				
+				
+			</div>
+
+			<!-- Article List -->
+			<div class="mini-post-list js-result d-none"><section>
+					<span class="fa listing-seperator">
+						<span class="tag-text">2024</span>
+					</span><div class="post-preview item" data-tags="">
+						<a href="/2024/12/19/my-first-post/">
+							<h2 class="post-title">
+								Back to Blogging
+							</h2>
+							
+						</a>
+						<hr>
+					</div></section>
+			</div>
+		</div>
+	</div>
+</div>
 
 
     <!-- Footer -->
@@ -333,6 +368,18 @@
 
 
 
+
+<!-- jquery.tagcloud.js -->
+<script>
+    async('/js/jquery.tagcloud.js', function () {
+        $.fn.tagcloud.defaults = {
+            //size: {start: 1, end: 1, unit: 'em'},
+            color: { start: '#bbbbee', end: '#2f93b4' },
+        };
+        $('#tag_cloud a').tagcloud();
+    })
+</script>
+<script src='/js/archive.js '></script>
 
 
 <!--fastClick.js -->
