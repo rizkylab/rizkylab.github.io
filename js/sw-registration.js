@@ -1,57 +1,68 @@
 /* ===========================================================
  * sw-registration.js
  * ===========================================================
- * Copyright 2016 @huxpro
- * Licensed under Apache 2.0
- * Register service worker.
- * ========================================================== */
+ * Custom Service Worker Registration for blog.rizkylab.com
+ * ===========================================================
+ */
 
 // SW Version Upgrade Ref: <https://youtu.be/Gb9uI67tqV0>
 
-function handleRegistration(registration){
-  console.log('Service Worker Registered. ', registration)
+function handleRegistration(registration) {
+  console.log('Service Worker Registered: ', registration);
+
   /**
    * ServiceWorkerRegistration.onupdatefound
    * The service worker registration's installing worker changes.
    */
-  registration.onupdatefound = (e) => {
+  registration.onupdatefound = () => {
     const installingWorker = registration.installing;
-    installingWorker.onstatechange = (e) => {
+    installingWorker.onstatechange = () => {
       if (installingWorker.state !== 'installed') return;
+
       if (navigator.serviceWorker.controller) {
-        console.log('SW is updated');
-      } else {
-        console.log('A Visit without previous SW');
+        console.log('SW has been updated.');
         createSnackbar({
-          message: 'App ready for offline use.',
+          message: 'New content available. Please refresh.',
+          actionText: 'Refresh',
+          action: function () {
+            location.reload();
+          },
+          duration: 5000
+        });
+      } else {
+        console.log('Service Worker installed for the first time.');
+        createSnackbar({
+          message: 'App is ready for offline use.',
           duration: 3000
-        })
+        });
       }
     };
-  }
+  };
 }
 
-if(navigator.serviceWorker){
-  // For security reasons, a service worker can only control the pages
-  // that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+if (navigator.serviceWorker) {
+  // For security reasons, a service worker can only control pages
+  // that are in the same directory level or below. sw.js is placed in the ROOT level.
   navigator.serviceWorker
     .register('/sw.js')
     .then((registration) => handleRegistration(registration))
-    .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    .catch((error) => console.error('Service Worker registration failed: ', error));
 
-  // register message receiver
-  // https://dbwriteups.wordpress.com/2015/11/16/service-workers-part-3-communication-between-sw-and-pages/
+  // Listen for messages from the Service Worker
   navigator.serviceWorker.onmessage = (e) => {
-    console.log('SW: SW Broadcasting:', event);
-    const data = e.data
-    
-    if(data.command == "UPDATE_FOUND"){
-      console.log("UPDATE_FOUND_BY_SW", data);
+    console.log('Service Worker Broadcast:', e);
+    const data = e.data;
+
+    if (data.command === 'UPDATE_FOUND') {
+      console.log('UPDATE_FOUND_BY_SW:', data);
       createSnackbar({
-        message: "Content updated.",
-        actionText:"refresh",
-        action: function(e){location.reload()}
-      })
+        message: 'Content has been updated.',
+        actionText: 'Refresh',
+        action: function () {
+          location.reload();
+        },
+        duration: 5000
+      });
     }
-  }
+  };
 }

@@ -91,3 +91,6 @@ plugins:
   - jekyll-sitemap
 plugins:
   - jekyll-minifier
+exclude:
+  - sw.js
+  - offline.html
