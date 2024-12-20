@@ -1074,11 +1074,10 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
+  background-color: #ffffff; /* Latar belakang putih */
+  color: #333333;           /* Teks abu gelap */
+  font-family: 'Roboto', Arial, sans-serif; /* Font sans-serif */
+  line-height: 1.6;
 }
 input,
 button,
@@ -1277,8 +1276,9 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin-bottom: 1.5em;
 }
+
 .lead {
   margin-bottom: 20px;
   font-size: 16px;
