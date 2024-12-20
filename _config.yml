@@ -73,7 +73,7 @@ ga_domain: blog.rizkylab.com
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "Rizky Sulistyo"
-sidebar-avatar: https://avatars.githubusercontent.com/u/1557686 # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/github-avatar.avif
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
