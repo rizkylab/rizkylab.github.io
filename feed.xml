@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rizky Sulistyo</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
+    <description>Rizkylab is your go-to blog for insights on technology, cybersecurity, and all things IT. Stay updated with the latest trends, discussions, and tips in the world of tech and security.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     <pubDate>Thu, 19 Dec 2024 17:46:11 +0700</pubDate>
