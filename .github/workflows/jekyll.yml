@@ -1,28 +1,44 @@
-name: Build and Deploy Jekyll
+name: Build and Deploy Jekyll Site
 
 on:
   push:
     branches:
+      - main # Ganti jika branch utama Anda bukan `main`
+
+  pull_request:
+    branches:
       - main
 
+  workflow_dispatch: # Untuk menjalankan manual
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # Check out the repository
-      - name: Set up Ruby
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Setup Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
-      - name: Install dependencies
+          ruby-version: "3.2" # Pastikan sesuai dengan versi Ruby Jekyll Anda
+
+      # Install dependencies
+      - name: Install Dependencies
         run: |
+          gem install bundler
           bundle install
-      - name: Build Jekyll site
-        run: |
-          bundle exec jekyll build
+
+      # Build Jekyll site
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GH_TOKEN }}  # Personal Access Token for better control
+          github_token: ${{ secrets.PAT_TOKEN }}
           publish_dir: ./_site
