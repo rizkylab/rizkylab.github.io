@@ -15,10 +15,7 @@ self.addEventListener('install', (event) => {
     caches.open('static-v1').then((cache) => {
       return cache.addAll([
         '/', // Cache halaman utama
-        '/index.html', // Cache file utama
-        '/assets/css/styles.css', // Contoh file CSS
-        '/assets/js/main.js', // Contoh file JS
-        '/images/logo.png' // Contoh file gambar
+        '/index.html'
       ]);
     })
   );
