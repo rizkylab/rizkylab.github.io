@@ -1,5 +1,13 @@
 title: Rizky Sulistyo
 
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Blog
+    url: /blog/
+
 # Your name to show in the footer
 author: Rizky Sulistyo
 navbar-links:
